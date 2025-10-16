@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tUdo-LIST App</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+  <body>
+    <div class="app-conteiner">
+
+      <!--Tela de Login-->
+      <div class="screen login-screen active" id="login-screen">
+        <div class="cloud-top"></div>
+        <div class="cloud-bottom"></div>
+        <div class="content-wrapper">
+          <header>
+            <h3><span class="logo-icon bi bi-check2-square"></span> tUdo-LIST</h3>
+          </header>
+          <div class="greeting">
+            <p>ACESSE A SUA CONTA</p>
+          </div>
+          <main>
+            <div class="input-group">
+              <span class="input-icon bi bi-envelope"></span>
+              <input type="email" placeholder="exemplo@gmail.com" />
+            </div>
+
+            <div class="input-group">
+              <span class="input-icon bi bi-lock-fill"></span>
+              <input type="password" placeholder="********" />
+            </div>
+            <button data-target="tarefas-screen" class="button-login">Entrar</button>
+            <button class="button-login">Criar conta</button>
+            <a href="#">Esqueci minha senha</a>
+            <p>ou</p>
+            <button class="bi bi-google google-login-btn">Acesse com o Google</button>
+          </main>
+          <footer>
+            <p>© 2025 tUdo-LIST. Todos os direitos reservados.</p>
+          </footer>
+        </div>
+      </div>
+
+      <!--Minhas tarefas-->
+      <div class="screen tarefas-screen" id="tarefas-screen">
+        <header>
+          <span class="header-icon placeholder"></span> 
+
+            <h2>Minhas Tarefas</h2>  
+
+          <button class="header-icon bi bi-person-circle" data-target="perfil-screen"></button> 
+        </header>
+        <div class="filter-bar">
+          <span class="nav-icon bi bi-funnel-fill"></span> Minhas Tarefas - Em progresso
+        </div>
+        <main>
+          <div class="card" data-target="tarefa-screen">
+            Preparação para Casamento
+            <div class="card-status">
+              <span class="card-progress">34% concluído</span>
+              <span class="alert-icon alert-icon bi bi-exclamation-triangle-fill"></span>
+            </div>
+          </div>
+          <div class="card" data-target="tarefa-screen">
+            Metas do Trabalho
+            <div class="card-status">
+              <span class="card-progress">75% concluído</span>
+              <span class="alert-icon alert-icon2 bi bi-exclamation-triangle-fill"></span>
+            </div>
+          </div>
+          <div class="card" data-target="tarefa-screen">
+            Treinos
+            <div class="card-status">
+              <span class="card-progress">33% concluído</span>
+              <span class="alert-icon alert-icon3 bi bi-exclamation-triangle-fill"></span>
+            </div>
+          </div>
+          <div class="card" data-target="tarefa-screen">
+            Compras na feira
+            <div class="card-status">
+              <span class="card-progress">50% concluído</span>
+              <span class="alert-icon alert-icon4 bi bi-exclamation-triangle-fill"></span>
+            </div>
+          </div>
+        </main>
+
+        <!--Barra de navegação-->
+        <div class="nav-bar">
+          <a data-target="tarefas-screen" class="active-nav">
+            <span class="nav-icon bi bi-funnel-fill"></span> <!-- Ícone de filtro -->
+          </a>
+          <a data-target="busca-screen">
+            <span class="nav-icon bi bi-search"></span> <!-- Ícone de busca -->
+          </a>
+          <a data-target="criar-screen">
+            <span class="nav-icon bi bi-plus-circle"></span> <!-- Ícone de adicionar -->
+          </a>
+          <a data-target="dashboard-screen">
+            <span class="nav-icon bi bi-bar-chart-line"></span> <!-- Ícone de gráfico -->
+          </a>
+          <a data-target="perfil-screen">
+            <span class="nav-icon bi bi-person-circle"></span>  <!-- Ícone de perfil -->
+          </a>
+        </div>
+      </div>
+      <!--Tela tarefa-->
+      <div class="screen tarefa-screen" id="tarefa-screen">
+        <header>
+          <button class="back-btn back-btn bi bi-arrow-left-circle" data-target="tarefas-screen"></button>
+          <h2>Tarefa</h2>
+        </header>
+        <main class="task-details">
+          <h3>
+            <span class="alert-icon bi bi-exclamation-triangle-fill"></span>
+            Treinos
+            <span class="edit-icon bi bi-plus-circle"></span>
+          </h3>
+          <ul>
+            <li><input type="checkbox" checked />Tríceps corda 3x8</li>
+            <li><input type="checkbox" checked />Tríceps Francês 3x8</li>
+            <li><input type="checkbox" />Elevação lateral na polia 3x10</li>
+            <li><input type="checkbox" />Desenvolvimento com halteres 3x10</li>
+            <li><input type="checkbox" />Crucifixo 3x10</li>
+            <li><input type="checkbox" />Supino Inclinado 3x12</li>
+          </ul>
+          <div class="progress-bar-container">
+            <progress value="33" max="100"></progress>
+            <div class="progress-text">Progresso de 33%</div>
+          </div>
+          <div class="task-actions">
+          <button class="delete-btn bi bi-trash"></button>
+          <button class="complete-btn">Concluir</button>
+        </div>
+        </main>
+      </div>
+
+      <!--Dashboard-->
+      <div class="screen dashboard-screen" id="dashboard-screen">
+        <header>
+          <button class="header-icon back-btn bi bi-arrow-left-circle" data-target="tarefas-screen"></button> 
+          <h2>Dashboard</h2>
+          <span class="header-icon placeholder"></span>
+        </header>
+        <div class="filter">
+          <span class="filter-icon bi bi-funnel-fill"></span><span> Última semana - Em progresso</span>
+        </div>
+        <main>
+          <div class="chart-container">
+            <div class="chart-inner">Tarefas</div>
+          </div>
+          <div class="stats-legend">
+            <div>
+              Baixa
+              <span class="bar baixa"></span>
+            </div>
+            <div>
+              Média
+              <span class="bar media"></span>
+            </div>
+            <div>
+              Alta
+              <span class="bar alta"></span>
+            </div>
+            <div>
+              Concluído
+              <span class="bar concluido"></span>
+            </div>
+            <div>
+              Pendente
+              <span class="bar pendente"></span>
+            </div>
+          </div>
+          <button class="share-btn bi bi-share" data-target="tarefas-screen">
+           Compartilhar progresso
+        </button>
+        </main>
+      </div>
+
+      <!--Criar Tarefa-->
+      <div class="screen criar-screen" id="criar-screen">
+        <header>
+          <button class="back-btn bi bi-arrow-left-circle" data-target="tarefas-screen"></button>
+          <h2>Criar Tarefa</h2>
+        </header>
+        <main>
+          <div class="form-group input-with-icon"> 
+            <span class="input-icon bi bi-pencil"></span> 
+            <input type="text" placeholder="Nome da tarefa*" /> 
+          </div>
+          <div class="form-group input-with-icon"> 
+            <span class="input-icon bi bi-keyboard"></span> 
+            <textarea placeholder="Descrição da tarefa*"></textarea> 
+          </div>
+          <div class="priority-header">
+            <span class="alert-icon bi bi-exclamation-triangle-fill"></span>
+            <label for="select-prioridade">Prioridade:</label>
+          </div>
+          <div class="form-group">
+            <select id="select-prioridade">
+              <option value="baixa">Baixa</option>
+              <option value="media">Média</option>
+              <option value="alta">Alta</option>
+            </select>
+            <div class="priority-info">
+              <p class="p-baixa">
+                <span class="alert-icon bi bi-exclamation-triangle-fill"></span> Verde - Baixa
+              </p>
+              <p class="p-media">
+                <span class="alert-icon bi bi-exclamation-triangle-fill"></span> Amarelo - Média
+              </p>
+              <p class="p-alta">
+                <span class="alert-icon bi bi-exclamation-triangle-fill"></span> Vermelho - Alta
+              </p>
+            </div>
+          </div>
+          <div class="actions">
+            <button data-target="tarefas-screen">Cancelar</button>
+            <button data-target="tarefas-screen">Salvar</button>
+          </div>
+        </main>
+      </div>
+
+      <!--Tela de Perfil-->
+      <div class="screen perfil-screen" id="perfil-screen">
+        <header>
+          <button class="header-icon back-btn bi bi-arrow-left-circle" data-target="tarefas-screen"></button> 
+            <h2>Meu Perfil</h2>
+          <span class="header-icon placeholder"></span>
+        </header>
+        <div class="user-info">
+          <div class="profile-icon bi bi-person"></div>
+          <p class="username">Rafael Menezes</p>
+        </div>
+        <ul>
+          <li data-target="tarefas-screen">
+            <span class="menu-icon task bi bi-pencil-square"></span> Minhas Tarefas
+            <span class="arrow-icon">></span>
+          </li>
+          <li>
+            <span class="menu-icon bi bi-person-circle"></span> Dados Pessoais
+            <span class="arrow-icon">></span>
+          </li>
+          <li>
+            <span class="menu-icon bi bi-instagram"></span> Redes Sociais
+            <span class="arrow-icon">></span>
+          </li>
+          <li>
+            <span class="menu-icon bi bi-bell-fill"></span> Notificações
+            <span class="arrow-icon">></span>
+          </li>
+          <li>
+            <span class="menu-icon bi bi-shield-shaded"></span> Privacidade
+            <span class="arrow-icon">></span>
+          </li>
+          <li>
+            <span class="menu-icon bi bi-star-fill"></span> Favoritos
+            <span class="arrow-icon">></span>
+          </li>
+          <li>
+            <span class="menu-icon bi bi-question-circle"></span> Ajuda
+            <span class="arrow-icon">></span>
+          </li>
+          <li data-target="login-screen">
+            <span class="menu-icon red bi bi-box-arrow-left"></span> Sair
+          </li>
+        </ul>
+      </div>
+
+      <!--Tela de Busca-->
+      <div class="screen busca-screen" id="busca-screen">
+    <header>
+        <button class="back-btn bi bi-arrow-left-circle" data-target="tarefas-screen"></button>
+        <h2>Busca</h2>
+    </header>
+    
+    <div class="search-area">
+        <input type="text" placeholder="Encontre sua atividade" class="search-input" />
+        <button class="search-btn bi bi-search"></button>
+    </div>
+    
+    <div class="recent-results" data-target="tarefa-screen">Treinos</div>
+    
+    <ul class="recent-searches">
+        <li data-target="tarefa-screen">tatuagens</li>
+        <li data-target="tarefa-screen">ta</li>
+        <li data-target="tarefa-screen">te</li>
+        <li data-target="tarefa-screen">to</li>
+        <li data-target="tarefa-screen">tu</li>
+        <li data-target="tarefa-screen">ti</li>
+    </ul>
+  </div>
+    </div>
+
+    <script src="./app/app.js"></script>
+  </body>
+</html>

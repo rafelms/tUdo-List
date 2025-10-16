@@ -1,0 +1,1067 @@
+/* Variáveis de Cores (Paleta do App) */
+:root {
+  --primary-color: #ff9800; /* Laranja Principal */
+  --secondary-color: #4caf50; /* Verde Secundário (Sucesso) */
+  --danger-color: #f44336; /* Vermelho (Perigo/Alerta) */
+  --text-dark: #333;
+  --text-light: #fff;
+  --bg-light: #f5f5f5;
+  --bg-screen: #ffffff;
+  --border-color: #ddd;
+  --progress-green: #4caf50;
+  --progress-yellow: #d3c54b;
+}
+
+/* Base e Estrutura do "App" */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* --- ESTILOS PARA AS "NUVENS" DE FUNDO (ajustadas para ficar iguais à imagem) --- */
+.cloud-top,
+.cloud-bottom{
+  position: absolute;
+  z-index: 5; /* atrás do conteúdo principal, mas visível sobre o fundo do aparelho */
+  background-color: var(--bg-screen); 
+  /* sombra suave para realçar o recorte das nuvens */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Pseudo-elementos (bolhas da nuvem) */
+.cloud-top,
+.cloud-top::before,
+.cloud-top::after,
+.cloud-bottom,
+.cloud-bottom::before,
+.cloud-bottom::after {
+  position: absolute;
+  background-color: var(--bg-screen);
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+/* Nuvem Superior Esquerda (maior, com "bolhas" externas) */
+.cloud-top {
+  width: 140px;
+  height: 170px;
+  top: -20px;
+  left: -5px;
+  /* bordas arredondadas para formar a "fazenda" de bolhas */
+  border-radius: 10% 70% 70% 90%;
+  background-color: var(--bg-screen);
+}
+
+.cloud-top::before {
+  content: "";
+  width: 140px;
+  height: 155px;
+  top: 30px;
+  left: -45px; /* grande bolha à esquerda, sai do contorno */
+  background-color: var(--bg-screen);
+}
+
+.cloud-top::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  top: 50px;
+  left: 90px; /* pequena bolha à direita formando a curvatura */
+  background-color: var(--bg-screen);
+  border-radius: 66% 50% 45% 55%;
+}
+
+/* Nuvem Inferior Direita (maior, com "bolhas" externas) */
+
+.cloud-bottom {
+  width: 230px;
+  height: 250px;
+  bottom: -140px;
+  right: -90px;
+  background-color: var(--bg-screen);
+  border-radius: 40% 70% 70% 90%;
+}
+.cloud-bottom::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  bottom: 50px;
+  right: -30px; /* bolha grande pra fora à direita como no mock */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  background-color: var(--bg-screen);
+}
+.cloud-bottom::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 190px;
+  bottom: 10px;
+  right: 80px; /* bolha interna para formar o recorte do canto inferior */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  background-color: var(--bg-screen);
+  border-radius: 40% 70%;
+}
+
+.app-conteiner {
+  position: relative;
+  width: 432px; 
+  height: 892px; 
+  background-color: #333; /* Fundo do dispositivo */
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* Garante que o conteúdo não vaze */
+}
+
+#login-screen header .logo-icon {
+    /* Aplica a cor laranja primária ao ícone do checkmark */
+    color: var(--primary-color);
+    font-size: 1.2em; 
+}
+
+#login-screen header h3 {
+    color: var(--text-dark); 
+    font-size: 1.3em; 
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o ícone e o texto */
+    margin: 0;
+    position: relative;
+    z-index: 15;
+}
+
+#login-screen main input {
+  border: none !important;
+  padding: 10px 15px;
+  border-radius: 8px;
+  align-items: center;
+}
+
+#login-screen main input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  border-width: 2px; /* Aumenta a espessura quando focado para um destaque sutil */
+  box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+}
+
+.button-login {
+  width: 40%;
+  margin: 10px auto;
+  padding: 8px 15px; /* Reduzindo de 12px para 8px na vertical */
+  font-size: 0.9em; /* Reduzindo o tamanho da fonte */
+  border-radius: 6px;
+}
+
+
+#login-screen .input-icon {
+  color: var(--primary-color); /* Aplica a cor laranja primária */
+  font-size: 1.2em;
+  margin-right: 50px; /* Espaçamento entre o ícone e o input */
+  padding: 15px 0; /* Padding vertical no ícone para ajudar no alinhamento */
+}
+
+/* Ajuste para o grupo de input (contêiner do ícone e do campo) */
+#login-screen .input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 0 15px;
+    background-color: var(--bg-screen);
+    margin-bottom: 10px;
+    width: 90%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos Comuns para Todas as Telas */
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #dfe6ed;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+  z-index: 10;
+  overflow:hidden;
+}
+
+.screen.active {
+  transform: translateX(0); /* Mostra a tela ativa */
+  z-index: 20;
+}
+
+/* 1. CONFIGURAÇÃO DO FLEXBOX NO HEADER (Fundamental) */
+.screen header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px 15px; /* Exemplo: 15px de padding nas laterais */
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+    background-color: var(--bg-screen);
+    border-radius: 25px;
+}
+
+/* 2. ESTILO DOS ÍCONES/BOTÕES DE CABEÇALHO */
+.screen header .header-icon {
+    padding: 0; 
+    margin: 0;
+    min-width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5em; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+}
+
+.screen header h2 {
+    flex-grow: 1;     
+    text-align: center;     
+    margin: 0; 
+    padding: 0;
+    font-size: 1.5em;
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.screen header .back-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 0;
+}
+
+.screen header .placeholder {
+    visibility: hidden;
+    width: 44px;           
+    min-width: 40px;          
+}
+
+/* --- LOGIN SCREEN --- */
+#login-screen {
+  justify-content: flex-start;
+  padding: 0;
+  transform: translateX(0);
+  z-index: 20; 
+}
+#login-screen .content-wrapper {
+  padding: 40px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background: #dfe6ed;
+}
+
+#login-screen header {
+  text-align: left;
+  padding: 40px 20px 20px;
+  border-bottom: none;
+  background: none;
+}
+
+#login-screen .greeting {
+  margin: 15px 0;
+  padding: 10px 20px;
+  /* Define a borda laranja (cor primária) */
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  /* Efeito de sombra sutil para dar o aspecto de "caixa elevada" */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1.1em;
+  color: var(--text-dark);
+  font-weight: bold;
+}
+
+#login-screen .greeting p {
+  margin: 0;
+}
+
+#login-screen main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+  align-items: center;
+}
+
+#login-screen input[type="email"],
+#login-screen input[type="password"] {
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+#login-screen button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#login-screen button:nth-of-type(1) {
+  /* Botão "Entrar" */
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+#login-screen button:nth-of-type(2) {
+  /* Botão "Criar Conta" */
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+#login-screen a {
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 0.9em;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+
+#login-screen .google-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-screen);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: normal;
+  gap: 10px;
+}
+
+#login-screen .google-login-btn::before {
+  font-size: 1.2em;
+  color: var(--primary-color); 
+}
+
+#login-screen footer {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.7em;
+  color: #888;
+  border-top: 1px solid var(--border-color);
+  position: relative;
+  z-index: 15;
+}
+
+/* --- MINHAS TAREFAS SCREEN --- */
+
+#tarefas-screen .filter-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 0.9em;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+#tarefas-screen main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  flex-grow: 1;
+  padding-bottom: 80px; /* Espaço para o footer */
+}
+
+#tarefas-screen .card {
+  background-color: var(--bg-screen);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+  cursor: pointer;
+  position: relative;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--text-dark);
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+#tarefas-screen .card:hover {
+  transform: scale(1.01); /* Aumenta o card em 1% */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+  z-index: 10; /* Garante que o card "flutue" acima dos outros */
+}
+
+#tarefas-screen .card-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  margin-top: 8px;
+}
+
+#tarefas-screen .card-progress {
+  font-weight: bold;
+  color: var(--text-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9em;
+}
+
+#tarefas-screen .card .alert-icon {
+  color: var(--danger-color);
+  font-size: 1.2em;
+}
+#tarefas-screen .card .alert-icon2 {
+  color: var(--progress-yellow);
+  font-size: 1.2em;
+}
+#tarefas-screen .card .alert-icon3 {
+  color: var(--progress-yellow);
+  font-size: 1.2em;
+}
+#tarefas-screen .card .alert-icon4 {
+  color: var(--progress-green);
+  font-size: 1.2em;
+}
+
+.card-progress-bar, 
+#tarefa-screen progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px; /* Padronizado para 8px */
+  border-radius: 6px;
+  overflow: hidden;
+  border: none;
+}
+
+/* Estilo para a parte de trás (trilha) da barra */
+.card-progress-bar::-webkit-progress-bar,
+#tarefa-screen progress::-webkit-progress-bar {
+  background-color: var(--bg-light); /* Padronizado para a variável de fundo */
+}
+
+/* Estilo para a parte da frente (valor) da barra */
+.card-progress-bar::-webkit-progress-value,
+#tarefa-screen progress::-webkit-progress-value {
+  background-color: var(--primary-color);
+}
+
+/* Estilo para o Firefox */
+.card-progress-bar::-moz-progress-bar,
+#tarefa-screen progress::-moz-progress-bar {
+  background-color: var(--primary-color);
+}
+
+/* Nav Bar (Footer) */
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-screen);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+}
+
+.nav-bar a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 0.75em;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.nav-bar a.active-nav,
+.nav-bar a:hover {
+  color: var(--primary-color);
+}
+
+.nav-bar .nav-icon {
+  font-size: 1.5em;
+  margin-bottom: 3px;
+}
+
+/* --- CRIAR TAREFA SCREEN --- */
+#criar-screen header {
+  justify-content: flex-start;
+}
+
+#criar-screen main {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 40rem;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#criar-screen .back-btn {
+  color: var(--primary-color);
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#criar-screen h2 {
+  flex-grow: 1;
+  text-align: center;
+}
+
+#criar-screen .form-group {
+  margin-bottom: 15px;
+}
+
+#criar-screen .form-group.input-with-icon {
+  display: flex; /* Transforma o contêiner em um flex container */
+  align-items: center; /* Alinha o ícone e o input verticalmente */
+  gap: 10px; /* Espaçamento entre o ícone e o campo */
+  
+  /* Adicione borda e fundo ao contêiner, como nos campos de login, se desejar */
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--bg-screen);
+  padding: 8px 15px; /* Padding interno para o ícone e input */
+  
+  margin-bottom: 15px; /* Espaço abaixo de cada grupo */
+}
+
+/* Estilo para os ícones que acompanham os inputs/textareas */
+#criar-screen .form-group.input-with-icon .input-icon {
+  color: var(--primary-color); /* Cor laranja para os ícones */
+  font-size: 1.3em; /* Tamanho do ícone */
+  /* Ajuste de altura e largura, se necessário, para centralização perfeita */
+  min-width: 24px; /* Garante que o ícone tenha um tamanho mínimo */
+  text-align: center;
+}
+
+/* Ajuste nos inputs/textareas DENTRO desses grupos para que ocupem o espaço restante */
+#criar-screen .form-group.input-with-icon input[type="text"],
+#criar-screen .form-group.input-with-icon textarea {
+  flex-grow: 1; /* Faz o input/textarea ocupar todo o espaço disponível */
+  border: none; /* Remove a borda individual se o contêiner já tem uma */
+  background-color: transparent; /* Fundo transparente para herdar o do pai */
+  padding: 5px 0; 
+  margin: 0; 
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+
+#criar-screen .priority-header {
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 5px; 
+}
+
+/* Estilo para o ícone de prioridade no título */
+#criar-screen .priority-header .alert-icon {
+  color: var(--primary-color); /* Aplica a cor laranja ao ícone */
+  font-size: 1.3em; /* Tamanho do ícone */
+  margin-right: 8px; /* Espaço entre o ícone e a label */
+}
+
+/* Estilo para a label de prioridade */
+#criar-screen .priority-header label {
+  font-weight: bold; /* Opcional: Deixar o texto em negrito */
+  color: var(--text-dark); /* Cor do texto */
+  margin: 0; /* Remove margens padrão que possam ter sido aplicadas em outro lugar */
+}
+
+#criar-screen select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 1em;
+  background-color: var(--bg-screen);
+  color: var(--text-dark);
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+#criar-screen textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+#criar-screen label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#criar-screen .priority-info {
+  margin-top: 10px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-light);
+  padding: 10px;
+  border-radius: 8px;
+}
+#criar-screen .priority-info p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+}
+#criar-screen .priority-info .alert-icon {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+.p-baixa {
+  color: var(--secondary-color);
+}
+.p-media {
+  color: var(--progress-yellow);
+}
+.p-alta {
+  color: var(--danger-color) !important;
+}
+
+#criar-screen .actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+#criar-screen .actions button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+#criar-screen .actions button:first-child {
+  /* Cancelar */
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+#criar-screen .actions button:last-child {
+  /* Salvar */
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+/* --- TAREFA SCREEN --- */
+#tarefa-screen {
+  padding: 15px;
+}
+#tarefa-screen header {
+  margin-bottom: 10px;
+}
+
+#tarefa-screen .task-details {
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+#tarefa-screen .task-details h3 {
+  display: flex;
+  justify-content: space-between;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 8px;
+  margin-top: 0;
+}
+
+#tarefa-screen .task-details h3 .alert-icon {
+  color: var(--progress-yellow); /* Cor amarela para o ícone de alerta */  
+  font-size: 1.2em; /* Pode ajustar o tamanho se necessário */
+  margin-right: 8px; /* Espaço entre o ícone e o texto "Treinos" */
+  gap: 10px;
+}
+
+#tarefa-screen .task-details .edit-icon {
+  color: var(--primary-color);
+  font-size: 1.2em;
+}
+
+#tarefa-screen ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+#tarefa-screen ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1em;
+  color: var(--text-dark);
+}
+
+#tarefa-screen ul li input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  /* Estilização para simular o radio/checkbox da imagem */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%; /* Faz parecer um radio button */
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+#tarefa-screen ul li input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+#tarefa-screen ul li input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 10px;
+  border: solid var(--bg-screen);
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+#tarefa-screen .progress-bar-container {
+  margin: 20px 0;
+}
+
+#tarefa-screen .progress-text {
+  font-weight: bold;
+  color: #666;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+
+#tarefa-screen .task-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#tarefa-screen .delete-btn {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+#tarefa-screen .complete-btn {
+  padding: 12px 30px;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* --- DASHBOARD SCREEN --- */
+#dashboard-screen {
+  padding: 20px;
+}
+
+#dashboard-screen main {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: 35rem; /* Tamanho da main*/
+}
+
+#dashboard-screen .filter{
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+#dashboard-screen .filter-icon {
+  color: var(--primary-color); /* Aplica a cor laranja APENAS ao ícone */
+  margin-right: 5px; /* Adiciona um pequeno espaço para separar o ícone do texto */
+  font-weight: bold; 
+}
+
+.chart-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: conic-gradient(
+        var(--secondary-color) 0% 5%,    
+        var(--danger-color) 5% 15%, 
+        var(--progress-yellow) 15% 35%,  
+        var(--primary-color) 35% 55%,   
+        #9e9e9e 55% 100%
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chart-inner {
+  width: 120px;
+  height: 120px;
+  background-color: var(--bg-screen);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: var(--text-dark);
+}
+
+.stats-legend {
+  width: 100%;
+  margin-top: 30px; 
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.stats-legend div {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+.stats-legend .bar {
+  height: 10px;
+  width: 40%;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+/* Cores das barras de progresso (fidelidade à imagem) */
+.bar.baixa {
+  background-color: var(--secondary-color);
+  width: 5%;
+}
+.bar.media {
+  background-color: var(--progress-yellow);
+  width: 20%;
+}
+.bar.alta {
+  background-color: var(--danger-color);
+  width: 15%;
+}
+.bar.concluido {
+  background-color: var(--primary-color);
+  width: 20%;
+}
+.bar.pendente {
+  background-color: #9e9e9e;
+  width: 40%;
+}
+
+#dashboard-screen .share-btn {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 100px;
+}
+
+/* --- BUSCA SCREEN --- */
+#busca-screen {
+    /* Garante espaço para o teclado placeholder e o nav-bar */
+    padding-bottom: 270px; /* Mais espaço para o teclado */
+    background-color: var(--bg-screen);
+}
+
+#busca-screen .search-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#busca-screen .search-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    /* Borda Laranja e Arredondamento */
+    border: 2px solid var(--primary-color);
+    border-radius: 25px; /* Mais arredondado, fiel à imagem */
+    font-size: 1em;
+    box-sizing: border-box;
+    background-color: var(--bg-light); /* Fundo cinza claro */
+}
+
+#busca-screen .search-btn {
+    /* Estilo do botão de Lupa (Cor Laranja) */
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50%; /* Faz um círculo perfeito */
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#busca-screen .recent-results {
+    margin-top: 10px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-dark); /* Cor do texto */
+    border-left: 3px solid var(--primary-color); /* Linha vertical laranja */
+    padding-left: 10px;
+    margin-bottom: 15px;
+    /* Linha horizontal laranja (simulação) */
+    border-bottom: 1px solid var(--primary-color);
+}
+#busca-screen .recent-results:active {
+    opacity: 0.8; /* Efeito de clique */
+}
+
+#busca-screen ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.1em;
+}
+#busca-screen ul li {
+    padding: 8px 0;
+    color: #666;
+    cursor: pointer;
+}
+#busca-screen ul li:active {
+    color: var(--primary-color); /* Realça ao clicar */
+}
+
+/* --- PERFIL SCREEN --- */
+#perfil-screen {
+  padding: 20px;
+  background-color: var(--bg-screen);
+}
+
+#perfil-screen .user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.profile-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ffe0b2; /* Laranja Claro */
+  border: 3px solid var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+#perfil-screen .username {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: var(--text-dark);
+}
+
+#perfil-screen ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+#perfil-screen ul li {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1em;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+#perfil-screen ul li:last-child {
+  border-bottom: none;
+  color: var(--danger-color);
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.menu-icon {
+  margin-right: 15px;
+  font-size: 1.2em;
+  color: var(--primary-color);
+}
+.menu-icon.red {
+  color: var(--danger-color);
+}
+.menu-icon.task {
+  color: var(--primary-color);
+}
+.arrow-icon {
+  margin-left: auto;
+  color: #888;
+}
