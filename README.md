@@ -2,6 +2,10 @@ tUdo-LIST App 📝
 - Este repositório contém o desenvolvimento front-end de um protótipo para um aplicativo de lista de tarefas (To-Do List), 
 o tUdo-LIST App, com foco em uma experiência para dispositivos móveis.
 
+🚀 Deploy & Hospedagem
+- O protótipo deste projeto está online e foi hospedado na plataforma Vercel. Graças à integração contínua com o GitHub, cada atualização enviada para o repositório reflete automaticamente no site.
+- Você pode acessar a versão ao vivo do projeto aqui: https://t-udo-list.vercel.app/
+
 📄 Sobre o Projeto
 - O principal intuito desta atividade foi exercitar a capacidade de transformar um design visual, originado de um wireframe 
 (criado em ferramentas como o Whimsical), em telas web interativas e funcionais.
