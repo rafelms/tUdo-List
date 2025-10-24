@@ -32,3 +32,7 @@ ou persistência de dados — ele serve como uma demonstração do progresso e d
 - Tela de Dashboard de Progresso
 - Tela de Perfil do Usuário
 - Tela de Busca
+
+🖼️ Protótipo do projeto feito no whireframe.
+
+![Whireframe do Projeto](./assets/styles/img/tUdoLIST.png)
